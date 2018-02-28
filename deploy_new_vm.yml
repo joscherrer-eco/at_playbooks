@@ -2,7 +2,6 @@
 #
 - name: Deploys a VM on the vCenter server
   hosts: localhost
-  ansible_user: root
   roles:
     - deploy_vm
 
