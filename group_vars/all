@@ -1,0 +1,68 @@
+################################################## DEPLOY NEW VM ###########################################
+# The hostname or IP address of the vSphere vCenter
+vcenter_server: 172.17.157.239
+
+# The username of the vSphere vCenter
+vcs_username : administrator@ecoice.local
+
+# The password of the vSphere vCenter
+vcs_password : 3gkZ0dQCocAWx!
+
+# Destination datacenter for the deploy operation
+datacenter: "CSE Datacenter"
+
+# The cluster name where the VM will run
+#cluster: "CSE Cluster"
+
+# Affect machine to the given resource pool
+resource_pool: QA
+
+# What state should the virtual machine be in ? (present/absent/poweredon/poweredoff/restarted/suspended/shutdownguest/rebootguest)
+state: poweredon
+
+# In whitch datastore vm files will be stocked
+datastore: datastore1
+
+# Destination folder, absolute or relative path to find an existing guest or create the new guest
+folder:
+
+# Name of the portgroup for this interface
+network: "CSE QA"
+
+# Template used to create VM
+template: cse-template-centos7
+
+# Name of the new VM
+name_vm: CSE-QA-VM-TEST
+
+# Allows connection when SSL certificates are not valid. Set to false when certificates are not trusted
+validate_certs: no
+
+# Valid value is "thin" (default:None)
+type: thin
+
+# Valid values are "buslogic", "lsilogic", "lsilogicsas" and paravirtual(default)
+scsi: paravirtual
+
+# Wait until vCenter detects an IP address for the VM
+wait_for_ip_address: no
+
+# Address IP for the new VM
+custom_ip:
+
+# Netmask
+netmask:
+
+# Gateway:
+gateway:
+
+# The ESXi hostname where the VM will run
+esxi_hostname: cse-esx-z402.srv.local.econocom.io
+
+# Hostname VM
+hostname_vm: "cse-qa-vm-test.srv.local.econocom.io"
+
+######################################### DELETE VM #####################################################
+
+# UUID VM
+uuid_vm_to_remove: 420b1cf0-0853-5e55-8176-a456cf47ca9b 

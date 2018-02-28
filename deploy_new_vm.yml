@@ -1,0 +1,18 @@
+---
+#
+- name: Deploys a VM on the vCenter server
+  hosts: localhost
+  roles:
+    - deploy_vm
+
+- name: Add new VM @IP on DNS
+  hosts: DNS
+  roles:
+    - dns
+
+- name: Add new VM on Centreon
+  hosts: Centreon
+  roles:
+    - centreon
+...
+

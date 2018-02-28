@@ -1,0 +1,4 @@
+---
+- name: Set Param host
+  shell: centreon -u "{{ admin }}" -p "{{password}}" -o SERVICE -a add -v ""{{host | upper}}";ping;max_check_attempts;10"
+...

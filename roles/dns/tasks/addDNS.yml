@@ -1,0 +1,7 @@
+---
+- name: Add VM in DNS
+  shell: perl -i -0pe "s/;CNAME/"{{host|lower}}"\t\tIN  A\t\t"{{ip}}"\n;CNAME/g" /var/named/forward.srv.local.econocom.io
+
+- name: Reload named service
+  shell: systemctl restart named.service
+...

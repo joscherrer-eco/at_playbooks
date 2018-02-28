@@ -1,0 +1,19 @@
+---
+- name: Set Param snmp_community
+  shell: centreon -u "{{ admin }}" -p "{{password}}" -o host -a setparam -v ""{{name_vm | upper}}";snmp_community;public"
+
+- name: Set Param snmp_version  
+  shell: centreon -u "{{ admin }}" -p "{{password}}" -o host -a setparam -v ""{{name_vm | upper}}";snmp_version;2c"
+
+- name: Set Param timezone
+  shell: centreon -u "{{ admin }}" -p "{{password}}" -o host -a setparam -v ""{{name_vm | upper}}";timezone;Europe/Paris"
+
+- name: Set Param check_period
+  shell: centreon -u "{{ admin }}" -p "{{password}}" -o host -a setparam -v ""{{name_vm | upper}}";check_period;none"
+
+- name: Set Param notification_period
+  shell: centreon -u "{{ admin }}" -p "{{password}}" -o host -a setparam -v ""{{name_vm | upper}}";notification_period;none"
+
+- name: Set Param check_command
+  shell: centreon -u "{{ admin }}" -p "{{password}}" -o host -a setparam -v ""{{name_vm | upper}}";check_command;base_host_alive_ICMP_v2"  
+...

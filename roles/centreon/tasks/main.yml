@@ -1,0 +1,5 @@
+---
+- include: "addCentreon.yml"
+- include: "setParam.yml"
+#- include: "setService.yml"
+...

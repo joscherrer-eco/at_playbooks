@@ -1,0 +1,56 @@
+---
+- name: Deploy a VM with template
+  vmware_guest:                              
+    hostname: "{{ vcenter_server }}"        
+    username: "{{ vcs_username }}"               
+    password: "{{ vcs_password }}"               
+    validate_certs: no                       
+    datacenter: "{{ datacenter }}"         
+#    cluster: "{{ cluster }}"            
+    resource_pool: "{{ resource_pool }}"    
+    name: "{{ name_vm }}"
+    state: "{{ state }}"
+    template: "{{ template }}"               
+    disk:                                    
+      - size_gb: 20                                   
+        type: "{{ type | default(thin)}}" 
+        datastore: "{{ datastore }}" 
+    hardware:                                
+      memory_mb: 2048
+      num_cpus: 1
+      scsi: paravirtual 
+    networks:
+    - name: "{{ network }}"
+      # ip: "{{ custom_ip }}"
+      # netmask: "{{ netmask }}"
+      # gateway: "{{ gateway }}"
+    wait_for_ip_address: yes
+    esxi_hostname: "{{ esxi_hostname }}"              
+  delegate_to: localhost 
+  register: newvm
+
+####################################### Get INFO FOR DNS FILE VARS #############################################
+- name: Add hostname to DNS vars file
+  shell: echo "host:" "{{ newvm.instance.hw_name | lower }}" > /etc/ansible/group_vars/DNS
+
+- name: Add ip to DNS vars file
+  shell: echo "ip:" "{{newvm.instance.ipv4}}" >> /etc/ansible/group_vars/DNS
+
+
+####################################### Get INFO FOR Centreon FILE VARS ########################################
+
+- name: Add credentials to Centreon vars file
+  shell: echo "admin:" admin > /etc/ansible/group_vars/Centreon
+
+- name: Add credentials to Centreon vars file
+  shell: echo "password:" eco123! >> /etc/ansible/group_vars/Centreon
+
+- name: Add hostname to Centreon vars file
+  shell: echo "hostname:" "{{ newvm.instance.hw_name | lower }}".srv.local.econocom.io >> /etc/ansible/group_vars/Centreon
+
+- name: Add hostname to Centreon vars file
+  shell: echo "host:" "{{ newvm.instance.hw_name | lower }}" >> /etc/ansible/group_vars/Centreon
+
+- name: Add ip to Centreon vars file
+  shell: echo "ip:" "{{newvm.instance.ipv4}}" >> /etc/ansible/group_vars/Centreon
+...
