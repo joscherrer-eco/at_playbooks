@@ -1,8 +1,5 @@
 ---
 - name: Deploy a VM with template
-  become: true
-  become_method: sudo
-  become_flags: '-s'
   vmware_guest:                              
     hostname: "{{ vcenter_server }}"        
     username: "{{ vcs_username }}"               
