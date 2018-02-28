@@ -2,17 +2,22 @@
 #
 - name: Deploys a VM on the vCenter server
   hosts: localhost
-  gather_facts: no
   roles:
     - deploy_vm
 
 - name: Add new VM @IP on DNS
   hosts: DNS
+  become: true
+  become_method: sudo
+  become_flags: '-s'
   roles:
     - dns
 
 - name: Add new VM on Centreon
   hosts: Centreon
+  become: true
+  become_method: sudo
+  become_flags: '-s'
   roles:
     - centreon
 ...

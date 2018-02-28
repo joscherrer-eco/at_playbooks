@@ -1,6 +1,5 @@
 ---
 - name: Deploy a VM with template
-  gather_facts: no
   vmware_guest:                              
     hostname: "{{ vcenter_server }}"        
     username: "{{ vcs_username }}"               
