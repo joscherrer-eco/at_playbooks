@@ -2,6 +2,7 @@
 #
 - name: Deploys a VM on the vCenter server
   hosts: localhost
+  gather_facts: no
   become: true
   become_method: sudo
   become_flags: '-s'
