@@ -2,12 +2,6 @@
 # The hostname or IP address of the vSphere vCenter
 vcenter_server: 172.17.157.239
 
-# The username of the vSphere vCenter
-vcs_username : administrator@ecoice.local
-
-# The password of the vSphere vCenter
-vcs_password : 3gkZ0dQCocAWx!
-
 # Destination datacenter for the deploy operation
 datacenter: "CSE Datacenter"
 
