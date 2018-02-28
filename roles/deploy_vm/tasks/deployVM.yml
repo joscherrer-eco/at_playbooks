@@ -1,33 +1,38 @@
 ---
-- name: Deploy a VM with template
-  vmware_guest:                              
-    hostname: "{{ vcenter_server }}"        
-    username: "{{ vcs_username }}"               
-    password: "{{ vcs_password }}"               
-    validate_certs: no                       
-    datacenter: "{{ datacenter }}"         
-#    cluster: "{{ cluster }}"            
-    resource_pool: "{{ resource_pool }}"    
-    name: "{{ name_vm }}"
-    state: "{{ state }}"
-    template: "{{ template }}"               
-    disk:                                    
-      - size_gb: 20                                   
-        type: "{{ type | default(thin)}}" 
-        datastore: "{{ datastore }}" 
-    hardware:                                
-      memory_mb: 2048
-      num_cpus: 1
-      scsi: paravirtual 
-    networks:
-    - name: "{{ network }}"
-      # ip: "{{ custom_ip }}"
-      # netmask: "{{ netmask }}"
-      # gateway: "{{ gateway }}"
-    wait_for_ip_address: yes
-    esxi_hostname: "{{ esxi_hostname }}"              
-  delegate_to: localhost 
-  register: newvm
+# - name: Deploy a VM with template
+#   vmware_guest:                              
+#     hostname: "{{ vcenter_server }}"        
+#     username: "{{ vcs_username }}"               
+#     password: "{{ vcs_password }}"               
+#     validate_certs: no                       
+#     datacenter: "{{ datacenter }}"         
+# #    cluster: "{{ cluster }}"            
+#     resource_pool: "{{ resource_pool }}"    
+#     name: "{{ name_vm }}"
+#     state: "{{ state }}"
+#     template: "{{ template }}"               
+#     disk:                                    
+#       - size_gb: 20                                   
+#         type: "{{ type | default(thin)}}" 
+#         datastore: "{{ datastore }}" 
+#     hardware:                                
+#       memory_mb: 2048
+#       num_cpus: 1
+#       scsi: paravirtual 
+#     networks:
+#     - name: "{{ network }}"
+#       # ip: "{{ custom_ip }}"
+#       # netmask: "{{ netmask }}"
+#       # gateway: "{{ gateway }}"
+#     wait_for_ip_address: yes
+#     esxi_hostname: "{{ esxi_hostname }}"              
+#   delegate_to: localhost 
+#   register: newvm
+
+- name: Sudoing
+  become: true
+  become_method: sudo
+  become_flags: '-s'
 
 ####################################### Get INFO FOR DNS FILE VARS #############################################
 - name: Add hostname to DNS vars file
