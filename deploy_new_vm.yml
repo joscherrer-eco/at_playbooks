@@ -2,6 +2,9 @@
 #
 - name: Deploys a VM on the vCenter server
   hosts: localhost
+  become: true
+  become_method: sudo
+  become_flags: '-s'
   roles:
     - deploy_vm
 
