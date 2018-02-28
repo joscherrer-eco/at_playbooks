@@ -1,0 +1,6 @@
+---
+- name: Pulls the repository
+  git:
+    repo: '{{repository}}'
+    dest: /var/www
+...

@@ -1,0 +1,4 @@
+---
+- name: Add a user
+  shell: adduser {{sshuser}}
+...

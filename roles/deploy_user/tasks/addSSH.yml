@@ -1,0 +1,25 @@
+---
+- name: Create .ssh
+  file: path=/home/{{sshuser}}/.ssh state=directory
+
+- name: Create authorized_keys
+  file: 
+    path: /home/{{sshuser}}/.ssh/authorized_keys
+    state: touch
+
+- name: Change .ssh attributes
+  file: 
+    path: /home/{{sshuser}}/.ssh
+    owner: "{{sshuser}}"
+    group: "{{sshuser}}"
+    mode: 0700
+    recurse: yes
+
+- name: chmod the .ssh folder
+  file: 
+    path: /home/{{sshuser}}/.ssh/authorized_keys
+    mode: 0600
+
+- name: Add the SSH key to the .ssh/authorized_keys file
+  shell: echo "{{sshkey}}" >> /home/{{sshuser}}/.ssh/authorized_keys
+...
