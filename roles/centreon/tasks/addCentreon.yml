@@ -1,4 +1,4 @@
 ---
 - name: Centreon add host
-  shell: centreon -u "{{ admin }}" -p "{{password}}" -o HOST -a ADD -v ""{{ host | upper }}";"{{ hostname }}";"{{ ip }}";OS-Linux-SNMP-custom;central;"
+  shell: centreon -u "{{ admin }}" -p "{{password}}" -o HOST -a ADD -v ""{{ name_vm | upper }}";"{{ hostname_vm }}";"{{ custom_ip }}";OS-Linux-SNMP-custom;central;"
 ...

@@ -45,10 +45,10 @@ wait_for_ip_address: no
 custom_ip:
 
 # Netmask
-netmask:
+netmask: 255.255.255.0
 
 # Gateway:
-gateway:
+gateway: 172.17.160.1
 
 # The ESXi hostname where the VM will run
 esxi_hostname: cse-esx-z402.srv.local.econocom.io
@@ -60,3 +60,7 @@ hostname_vm: "cse-qa-vm-test.srv.local.econocom.io"
 
 # UUID VM
 uuid_vm_to_remove: 420b1cf0-0853-5e55-8176-a456cf47ca9b 
+
+# Centreon
+admin: admin
+password: eco123!
