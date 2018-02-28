@@ -2,9 +2,7 @@
 #
 - name: Deploys a VM on the vCenter server
   hosts: localhost
-  become: true
-  become_method: sudo
-  become_flags: '-s'
+  ansible_user: root
   roles:
     - deploy_vm
 
