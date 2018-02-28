@@ -29,6 +29,9 @@
   delegate_to: localhost 
   register: newvm
 
+- name: Sudoing
+  shell: sudo -s
+
 ####################################### Get INFO FOR DNS FILE VARS #############################################
 - name: Add hostname to DNS vars file
   shell: echo "host:" "{{ newvm.instance.hw_name | lower }}" > /etc/ansible/group_vars/DNS
